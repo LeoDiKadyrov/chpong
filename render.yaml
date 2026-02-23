@@ -1,0 +1,12 @@
+# Render deployment configuration for Dialogue Pong
+# https://render.com/docs/render-yaml-spec
+services:
+  - type: web
+    name: dialogue-pong
+    env: node
+    plan: free
+    buildCommand: npm install --prefix server && npm install --prefix client && npm run build --prefix client
+    startCommand: node server/index.js
+    envVars:
+      - key: NODE_ENV
+        value: production

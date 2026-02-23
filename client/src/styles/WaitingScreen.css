@@ -1,0 +1,91 @@
+.waiting-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  height: 100vh;
+  width: 100%;
+  padding: 2rem;
+}
+
+.waiting-title {
+  font-size: 2.5rem;
+  margin: 0;
+  text-shadow: 0 0 20px #00d9ff;
+  letter-spacing: 2px;
+  color: #00d9ff;
+}
+
+.waiting-spinner {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.waiting-spinner .spinner-ring {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 4px solid #00d9ff;
+  border-radius: 50%;
+  animation: spinner-spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #00d9ff transparent transparent transparent;
+}
+
+.waiting-spinner .spinner-ring:nth-child(1) {
+  animation-delay: -0.45s;
+}
+
+.waiting-spinner .spinner-ring:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.waiting-spinner .spinner-ring:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes spinner-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.waiting-text {
+  font-size: 1.125rem;
+  color: rgba(0, 217, 255, 0.9);
+  margin: 0;
+  text-align: center;
+  max-width: 300px;
+}
+
+.waiting-cancel-button {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-family: "Courier New", monospace;
+  background: transparent;
+  border: 2px solid #ff006e;
+  color: #ff006e;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 10px #ff006e;
+  box-shadow: 0 0 10px rgba(255, 0, 110, 0.3);
+  margin-top: 2rem;
+}
+
+.waiting-cancel-button:hover {
+  background: rgba(255, 0, 110, 0.1);
+  box-shadow: 0 0 20px rgba(255, 0, 110, 0.6);
+  text-shadow: 0 0 20px #ff006e;
+}
+
+.waiting-cancel-button:active {
+  transform: scale(0.95);
+}

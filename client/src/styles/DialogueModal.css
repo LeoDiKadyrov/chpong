@@ -1,0 +1,205 @@
+/* Dialogue Modal Styles - Neon overlay for message input */
+
+.dialogue-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  backdrop-filter: blur(2px);
+}
+
+.dialogue-modal {
+  position: relative;
+  background: rgba(10, 14, 39, 0.98);
+  border: 2px solid currentColor;
+  border-radius: 8px;
+  padding: 2rem;
+  width: 480px;
+  max-width: 90vw;
+  box-shadow: 0 0 40px currentColor, 0 0 80px rgba(255, 0, 110, 0.2);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.dialogue-header {
+  font-family: "Courier New", monospace;
+  font-size: 1.25rem;
+  margin: 0;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px currentColor;
+}
+
+.dialogue-textarea {
+  font-family: "Courier New", monospace;
+  font-size: 1rem;
+  background: rgba(26, 31, 58, 0.8);
+  border: 2px solid currentColor;
+  border-radius: 4px;
+  padding: 1rem;
+  color: #00d9ff;
+  resize: none;
+  height: 120px;
+  outline: none;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 0 10px rgba(0, 217, 255, 0.1);
+}
+
+.dialogue-textarea:focus {
+  box-shadow: inset 0 0 10px rgba(0, 217, 255, 0.3), 0 0 20px currentColor;
+}
+
+.dialogue-textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dialogue-textarea::placeholder {
+  color: rgba(0, 217, 255, 0.5);
+}
+
+.dialogue-footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.dialogue-timer {
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-shadow: 0 0 10px currentColor;
+  min-width: 50px;
+  transition: color 0.2s ease;
+}
+
+.dialogue-counter {
+  color: rgba(0, 217, 255, 0.7);
+  font-size: 0.875rem;
+  font-family: "Courier New", monospace;
+}
+
+.dialogue-send-button {
+  padding: 0.75rem 1.5rem;
+  font-family: "Courier New", monospace;
+  font-size: 1rem;
+  background: transparent;
+  border: 2px solid currentColor;
+  color: inherit;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  text-shadow: 0 0 5px currentColor;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.dialogue-send-button:hover:not(:disabled) {
+  background: rgba(0, 217, 255, 0.1);
+  box-shadow: 0 0 25px currentColor;
+}
+
+.dialogue-send-button:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.dialogue-send-button:disabled {
+  cursor: not-allowed;
+}
+
+.dialogue-submitting {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #00d9ff;
+  font-size: 0.875rem;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Waiting Overlay Styles */
+.waiting-overlay-content {
+  position: relative;
+  background: rgba(10, 14, 39, 0.98);
+  border: 2px solid currentColor;
+  border-radius: 8px;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+.waiting-overlay-text {
+  font-family: "Courier New", monospace;
+  font-size: 1.25rem;
+  margin: 0;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px currentColor;
+}
+
+.waiting-overlay-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.waiting-overlay-dots .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: dotPulse 1.4s infinite;
+}
+
+.waiting-overlay-dots .dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.waiting-overlay-dots .dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.waiting-overlay-dots .dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes dotPulse {
+  0%, 60%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}

@@ -1,0 +1,15 @@
+.game-canvas {
+  display: block;
+  border: 2px solid #00d9ff;
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.5),
+              inset 0 0 20px rgba(255, 0, 110, 0.1);
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+}
+
+.game-canvas:focus {
+  outline: none;
+  box-shadow: 0 0 30px rgba(0, 217, 255, 0.8),
+              inset 0 0 20px rgba(255, 0, 110, 0.1);
+}
