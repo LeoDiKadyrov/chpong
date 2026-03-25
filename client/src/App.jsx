@@ -1,16 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { getSocket, connectSocket, disconnectSocket, resetSocket } from './network/socket.js';
 import { EV_JOIN_QUEUE, EV_LEAVE_QUEUE, EV_MATCH_FOUND } from '@shared/constants.js';
 import MenuScreen from './components/MenuScreen.jsx';
 import LocalGame from './components/LocalGame.jsx';
 import WaitingScreen from './components/WaitingScreen.jsx';
 import NetworkGame from './components/NetworkGame.jsx';
+import LanguagePicker from './components/LanguagePicker.jsx';
 import './App.css';
 
 function App() {
+  const { i18n } = useTranslation();
   // Game mode: 'menu' | 'local' | 'waiting' | 'online'
   const [mode, setMode] = useState('menu');
   const [networkSession, setNetworkSession] = useState(null); // { socket, playerId, roomId }
+
+  // Handle RTL for Arabic, LTR for all others
+  useEffect(() => {
+    const lang = i18n.language.split('-')[0];
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = lang;
+  }, [i18n.language]);
 
   /**
    * Handle Local game button
@@ -83,6 +93,7 @@ function App() {
 
   return (
     <div id="root">
+      <LanguagePicker />
       {mode === 'menu' && (
         <MenuScreen
           onLocal={handlePlayLocal}
