@@ -20,6 +20,7 @@
   border: 2px solid currentColor;
   border-radius: 8px;
   padding: 2rem;
+  box-sizing: border-box;
   width: 480px;
   max-width: 90vw;
   box-shadow: 0 0 40px currentColor, 0 0 80px rgba(255, 0, 110, 0.2);

@@ -1,0 +1,34 @@
+.language-picker {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 500;
+  background: rgba(10, 14, 39, 0.85);
+  border: 1px solid rgba(0, 217, 255, 0.4);
+  border-radius: 4px;
+  color: #00d9ff;
+  font-family: "Courier New", monospace;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+  outline: 2px solid transparent;
+  transition: border-color 0.2s ease;
+  max-width: 130px;
+}
+
+.language-picker:hover,
+.language-picker:focus {
+  border-color: #00d9ff;
+  box-shadow: 0 0 8px rgba(0, 217, 255, 0.4);
+}
+
+.language-picker option {
+  background: #0a0e27;
+  color: #00d9ff;
+}
+
+/* In RTL (Arabic) layout, keep picker anchored to the physical right edge */
+[dir="rtl"] .language-picker {
+  right: auto;
+  left: 1rem;
+}
