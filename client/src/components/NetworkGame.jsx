@@ -242,6 +242,7 @@ function NetworkGame({ socket, playerId, roomId, onLeave, onPlayAgain }) {
     socket.on(EV_OPPONENT_LEFT, () => {
       stopRenderLoop();
       soundManager.stopBgMusic();
+      ballTrailRef.current = [];
       setEndReason('opponentLeft');
       setGameEnded(true);
     });
@@ -260,6 +261,7 @@ function NetworkGame({ socket, playerId, roomId, onLeave, onPlayAgain }) {
       socket.off(EV_OPPONENT_LEFT);
       stopRenderLoop();
       soundManager.stopBgMusic();
+      soundManager.close();
     };
   }, [playerId, socket]);
 

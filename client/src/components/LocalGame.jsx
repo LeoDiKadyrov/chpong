@@ -112,6 +112,7 @@ function LocalGame({ onBack }) {
       inputHandlers.current.detach();
       gameLoop.current.stop();
       soundManager.stopBgMusic();
+      soundManager.close();
     };
   }, []);
 
