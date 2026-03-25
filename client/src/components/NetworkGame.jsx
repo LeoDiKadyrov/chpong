@@ -45,6 +45,20 @@ const TRAIL_MAX = 6;
  * Props: socket, playerId, roomId, onLeave, onPlayAgain
  */
 function NetworkGame({ socket, playerId, roomId, onLeave, onPlayAgain }) {
+  // Scale factor for mobile — CSS transform scales the game wrapper without
+  // touching physics coordinates (which always run at 800×600 internally).
+  const [scale, setScale] = useState(() => Math.min(1, (window.innerWidth - 32) / 800));
+
+  useEffect(() => {
+    const handleResize = () => setScale(Math.min(1, (window.innerWidth - 32) / 800));
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
+    };
+  }, []);
+
   // Game state is entirely driven by the server
   const canvasRef = useRef(null);
   const gameStateRef = useRef({
@@ -281,20 +295,28 @@ function NetworkGame({ socket, playerId, roomId, onLeave, onPlayAgain }) {
     <div className="app-container">
       <h1 className="app-title">Dialogue Pong — Online ({playerId === PLAYER_1 ? 'P1' : 'P2'})</h1>
 
-      <div className="game-wrapper">
-        <GameCanvas ref={canvasRef} />
-        <SessionTimer />
+      <div style={{
+        height: scale < 1 ? `${(FIELD_HEIGHT + 60) * scale}px` : undefined,
+        overflow: 'visible',
+      }}>
+        <div className="game-wrapper" style={{
+          transform: `scale(${scale})`,
+          transformOrigin: 'top center',
+        }}>
+          <GameCanvas ref={canvasRef} />
+          <SessionTimer />
 
-        {dialogueState === 'mine' && (
-          <DialogueModal
-            player={playerId}
-            onSubmit={handleMessageSubmit}
-          />
-        )}
+          {dialogueState === 'mine' && (
+            <DialogueModal
+              player={playerId}
+              onSubmit={handleMessageSubmit}
+            />
+          )}
 
-        {dialogueState === 'opponent' && (
-          <WaitingOverlay waitingFor={playerId === PLAYER_1 ? PLAYER_2 : PLAYER_1} />
-        )}
+          {dialogueState === 'opponent' && (
+            <WaitingOverlay waitingFor={playerId === PLAYER_1 ? PLAYER_2 : PLAYER_1} />
+          )}
+        </div>
       </div>
 
       <ChatFeed messages={messages} />

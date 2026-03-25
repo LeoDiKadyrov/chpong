@@ -10,7 +10,7 @@
 }
 
 .menu-title {
-  font-size: 4rem;
+  font-size: clamp(2rem, 6vw, 4rem);
   margin: 0;
   text-shadow: 0 0 30px #00d9ff;
   letter-spacing: 3px;

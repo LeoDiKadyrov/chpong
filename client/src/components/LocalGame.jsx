@@ -32,6 +32,20 @@ import VolumeControl from './VolumeControl.jsx';
  * Props: onBack (callback to return to menu)
  */
 function LocalGame({ onBack }) {
+  // Scale factor for mobile — CSS transform scales the game wrapper without
+  // touching physics coordinates (which always run at 800×600 internally).
+  const [scale, setScale] = useState(() => Math.min(1, (window.innerWidth - 32) / 800));
+
+  useEffect(() => {
+    const handleResize = () => setScale(Math.min(1, (window.innerWidth - 32) / 800));
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
+    };
+  }, []);
+
   // Canvas and game refs (no re-renders per frame)
   const canvasRef = useRef(null);
   const keysRef = useRef(new Set());
@@ -217,15 +231,23 @@ function LocalGame({ onBack }) {
     <div className="app-container">
       <h1 className="app-title">Dialogue Pong — Local</h1>
 
-      <div className="game-wrapper">
-        <GameCanvas ref={canvasRef} />
-        <SessionTimer />
-        {dialogueState && (
-          <DialogueModal
-            player={dialogueState}
-            onSubmit={handleMessageSubmit}
-          />
-        )}
+      <div style={{
+        height: scale < 1 ? `${(FIELD_HEIGHT + 60) * scale}px` : undefined,
+        overflow: 'visible',
+      }}>
+        <div className="game-wrapper" style={{
+          transform: `scale(${scale})`,
+          transformOrigin: 'top center',
+        }}>
+          <GameCanvas ref={canvasRef} />
+          <SessionTimer />
+          {dialogueState && (
+            <DialogueModal
+              player={dialogueState}
+              onSubmit={handleMessageSubmit}
+            />
+          )}
+        </div>
       </div>
 
       <ChatFeed messages={messages} />
