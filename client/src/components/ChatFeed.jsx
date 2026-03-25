@@ -38,7 +38,7 @@ function ChatFeed({ messages }) {
                 color: msg.player === PLAYER_1 ? COLOR_PADDLE_P1 : COLOR_PADDLE_P2,
               }}
             >
-              {msg.player === PLAYER_1 ? 'P1' : 'P2'}
+              {msg.player === PLAYER_1 ? t('howtoplay.player1') : t('howtoplay.player2')}
             </span>
             <span className="chat-text">{msg.text}</span>
           </div>

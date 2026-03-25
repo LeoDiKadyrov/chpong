@@ -26,7 +26,7 @@ function GameOverScreen({ reason, messages, playerId, onPlayAgain, onMainMenu })
     const lines = ['Dialogue Pong — Conversation Log', '='.repeat(40), ''];
     messages.forEach(({ player, text, timestamp }) => {
       const time = new Date(timestamp).toLocaleTimeString();
-      const label = player === playerId ? 'You' : 'Opponent';
+      const label = player === playerId ? t('gameover.labelYou') : t('gameover.labelOpponent');
       lines.push(`[${time}] ${label}: ${text}`);
     });
     lines.push('', '='.repeat(40));
