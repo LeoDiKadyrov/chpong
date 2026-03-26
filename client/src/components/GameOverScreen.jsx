@@ -36,7 +36,7 @@ function GameOverScreen({ reason, messages, playerId, onPlayAgain, onMainMenu })
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'dialogue-pong-conversation.txt';
+    a.download = 'chpong-conversation.txt';
     a.click();
     URL.revokeObjectURL(url);
   };
