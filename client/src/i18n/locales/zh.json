@@ -47,6 +47,7 @@
   "controls.player2Instructions": "玩家2：↑ / ↓",
   "controls.youInstructions": "你：{{keys}}",
   "controls.opponentInstructions": "对手：{{keys}}",
+  "controls.reportBugAria": "报告错误",
   "menu.stats.playersLabel": "玩家",
   "menu.stats.dialoguesLabel": "对话"
 }

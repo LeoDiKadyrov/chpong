@@ -47,6 +47,7 @@
   "controls.player2Instructions": "プレイヤー2: ↑ / ↓",
   "controls.youInstructions": "あなた: {{keys}}",
   "controls.opponentInstructions": "相手: {{keys}}",
+  "controls.reportBugAria": "バグを報告",
   "menu.stats.playersLabel": "プレイヤー",
   "menu.stats.dialoguesLabel": "ダイアローグ"
 }

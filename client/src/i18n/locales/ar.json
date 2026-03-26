@@ -47,6 +47,7 @@
   "controls.player2Instructions": "اللاعب 2: ↑ / ↓",
   "controls.youInstructions": "أنت: {{keys}}",
   "controls.opponentInstructions": "الخصم: {{keys}}",
+  "controls.reportBugAria": "الإبلاغ عن خطأ",
   "menu.stats.playersLabel": "لاعبون",
   "menu.stats.dialoguesLabel": "حوارات"
 }

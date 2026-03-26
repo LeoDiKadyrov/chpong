@@ -47,6 +47,7 @@
   "controls.player2Instructions": "Player 2: Arrow Up / Arrow Down",
   "controls.youInstructions": "You: {{keys}}",
   "controls.opponentInstructions": "Opponent: {{keys}}",
+  "controls.reportBugAria": "Report a bug",
   "menu.stats.playersLabel": "players",
   "menu.stats.dialoguesLabel": "dialogues"
 }

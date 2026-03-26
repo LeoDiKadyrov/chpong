@@ -47,6 +47,7 @@
   "controls.player2Instructions": "Spieler 2: ↑ / ↓",
   "controls.youInstructions": "Du: {{keys}}",
   "controls.opponentInstructions": "Gegner: {{keys}}",
+  "controls.reportBugAria": "Fehler melden",
   "menu.stats.playersLabel": "Spieler",
   "menu.stats.dialoguesLabel": "Dialoge"
 }
