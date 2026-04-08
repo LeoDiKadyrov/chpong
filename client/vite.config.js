@@ -6,6 +6,15 @@ import path from 'path'
 export default defineConfig({
   plugins: [react()],
   base: './',
+  build: {
+    rollupOptions: {
+      output: {
+        entryFileNames: '[name]-[hash].js',
+        chunkFileNames: '[name]-[hash].js',
+        assetFileNames: '[name]-[hash].[ext]',
+      },
+    },
+  },
   resolve: {
     alias: {
       '@shared': path.resolve(__dirname, '../shared'),
