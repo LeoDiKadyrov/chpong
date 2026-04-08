@@ -3,6 +3,7 @@
 A multiplayer web game where every paddle hit forces you to write a message to your opponent. Classic Pong mechanics, experimental dialogue experience.
 
 **[Play Now →](https://dialogue-pong.onrender.com)** 
+Or here: https://leodikadyrov.itch.io/chpong
 
 ---
 
